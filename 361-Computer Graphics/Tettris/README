@@ -1,0 +1,15 @@
+- Read me -
+CMPT 365 Assignment 1
+Student Number: 301254451
+SFU ID: fzchen
+Name: Fang Zhou Chen 
+
+Tetris
+
+The game is coded by myself, no external resources used. 
+The game should behave exactly as expected as from the instructions page.
+There is a brief instruction manual floating next to the tetris board.
+One additional feature I've added is fast drop. You can press the Space key to instantly drop the block to the bottom of the board.
+The game status is display on top of the board.
+
+P.S If you would like to adjust the size of the tetris board, you can do so on line 34 on the HTML file.

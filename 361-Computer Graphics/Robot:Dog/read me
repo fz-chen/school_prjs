@@ -1,0 +1,19 @@
+-Read Me-
+CMPT 361 Programming Assignment 3
+Fang Zhou Chen
+301254451
+
+The zip file contains the three common js files from the course website, three.js, a scene for the robotic arm, and a scene for myScene.
+
+Part 1
+Robotic Arm
+The robotic arm should operate as expected. Clicking on the scree when the Base Angle is 0, and the arm will rotate automatically to try to grab the point. When base angle is not 0, the ball will disappear. You can rotate the arm with the sider on the side. The render is called recursively, traversing in a tree manner (with children and siblings).
+
+Part 2
+For this part, I drew a dog with the help of Three.js. The dog has a tail wag animation that can be activated when you click the Wag Tail button on the bottom of the scene. You may also rotate the dog on the Y axis with the slider below. You can adjust the head tilt angle with the head tilt angle. 
+
+For the second part of assignment, I used a lot of translation, rotation, shearing to build the dog. This is made with combining multiple polygons together. The basic polygon shapes were built with Three.js, it was quit challenging creating the various different shapes at first.
+
+A cool effect I created is groupping a lot of different parts together, in a similar manner to the robotic arm (where moving the base will also move connected components). By doing this, you can do things like tilting the head or wagging the tail.
+
+I used directional lighting for a clean visual effect. I've also tried point light, spot light, and ambient lighting, but directional lighting has the most natural effect. 

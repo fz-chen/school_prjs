@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+attribute vec4 aVertexPosition;
+
+
+uniform mat4 uModelViewMatrix;
+uniform mat4 uProjectionMatrix;
+
+void main() {
+  gl_Position = uProjectionMatrix * uModelViewMatrix * aVertexPosition;;
+ //gl_Position =aVertexPosition;
+}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+precision mediump float;
+uniform vec4 uColor;
+
+
+
+void main() {
+	gl_FragColor = uColor;
+}
+</script>
+
+<script src="webgl-utils.js"></script>
+<script src="initShaders.js"></script>
+<script src="MV.js"></script>
+
+<script type="text/javascript" src="myRobot.js" defer></script>
+
+<body>
+
+<canvas id="gl-canvas" width="500" height="500" style="float:left"> 
+Oops ... your browser doesn't support the HTML5 canvas element
+</canvas>
+
+<div>
+	<input type="range" id="baseAngle" name="baseAngle"
+         min="-180" max="180" value="0" step="2">
+    <label for="volume">Base angle: <span id="baseAngleOutput"></span></label>
+	<br>
+    <input type="range" id="armAngle" name="armAngle"
+         min="-360" max="360" value="0" step="2">
+    <label for="volume">Arm angle: <span id="armAngleOutput"></span></label>
+	<br>
+    <input type="range" id="handAngle" name="handAngle" 
+         min="-360" max="360" value="0" step="2">
+    <label for="cowbell">Hand angle: <span id="handAngleOutput"></span></label>
+</div>
+
+
+</body>
+</html>

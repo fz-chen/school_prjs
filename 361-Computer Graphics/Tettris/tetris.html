@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<p id="debug"></p>
+<script id="vertex-shader" type="x-shader/x-vertex">
+attribute vec4 vPosition;
+void
+main()
+{
+    gl_Position = vPosition;
+}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+
+precision mediump float;
+uniform vec4 fColor; 
+void
+main()
+{
+    gl_FragColor = fColor;
+}
+</script>
+
+<!-- <script type="text/javascript" src="./triangle_files/webgl-utils.js"></script> -->
+
+<script src="http://www2.cs.sfu.ca/~kkyin/cmpt361/Common/webgl-utils.js"></script>
+<script src="http://www2.cs.sfu.ca/~kkyin/cmpt361/Common/initShaders.js"></script>
+<script src="http://www2.cs.sfu.ca/~kkyin/cmpt361/Common/MV.js"></script>
+<script type="text/javascript" src="tetris.js" defer></script>
+
+<body>
+	<div id="gameStatus">Game Status: Game Running</div>
+<canvas id="tetris-board" width="250" height="500" style="float:left"> 
+Oops ... your browser doesn't support the HTML5 canvas element
+</canvas>
+	<div style="float: left; margin: 15px; width: 60%">Instructions: <br>
+		 (Identical to the instructions on the assignment page) <br>
+		 + Use the left and right arrow keys to move one tile left or right. <br>
+		 + Use the up key to rotate the tile. The tile will only rotate if there is enough space for their rotation. <br>
+		 + You can accelerate the falling speed of a block by pressing or holding the down arrow key. <br>
+		 + You can press <b>SPACE</b> to make the block fall to the bottom instantly. <br>
+		 + You can press <b>Q</b> at anytime to quit the game. <br>
+		 + The game will be automatically over if the falling block can't appear on the screen. <br>
+		 + You can restart the game by pressing <b>R</b> when the game is stopped.
+	</div>
+</body>
+</html>

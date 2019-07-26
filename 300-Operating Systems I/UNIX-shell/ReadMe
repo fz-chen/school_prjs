@@ -1,0 +1,5 @@
+FangZhou Chen	301254451	fzchen@sfu.ca
+Cmpt-300 A1 part 2-1
+The zipfile contains a makefile, ReadMe, and my_shell.c. The make file generates an executable file my_shell, and my_shell.o. Type "make run" to compile and run the terminal.
+
+My code ealier had an error with piping, it is now fixed, but that is why it is a few hours late.

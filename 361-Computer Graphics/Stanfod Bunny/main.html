@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+attribute vec4 aVertexPosition;
+
+attribute vec3 a_normal;
+
+uniform mat4 uModelViewMatrix;
+uniform mat4 uProjectionMatrix;
+uniform vec3 u_viewWorldPosition;
+
+uniform vec3 u_lightWorldPosition;
+uniform mat4 u_world;
+uniform mat4 u_worldInverseTranspose;
+
+
+varying vec3 v_normal;
+varying vec3 v_surfaceToLight;
+varying vec3 v_surfaceToView;
+void main() {
+  gl_Position = uProjectionMatrix * uModelViewMatrix * aVertexPosition;
+  v_normal = mat3(u_worldInverseTranspose) * a_normal;
+
+  vec3 surfaceWorldPosition = ( aVertexPosition).xyz;
+  v_surfaceToLight = normalize(u_lightWorldPosition - surfaceWorldPosition);
+    v_surfaceToView = u_viewWorldPosition - surfaceWorldPosition;
+}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+precision mediump float;
+uniform vec4 uColor;
+uniform float u_shininess;
+uniform bool enableLight;
+varying vec3 v_normal;
+varying vec3 v_surfaceToLight;
+varying vec3 v_surfaceToView;
+uniform vec3 u_lightDirection;
+uniform float u_limit;  
+
+
+void main() {
+	vec3 normal = normalize(v_normal);
+
+	vec3 surfaceToLightDirection = normalize(v_surfaceToLight);
+	vec3 surfaceToViewDirection = normalize(v_surfaceToView);
+	vec3 halfVector = normalize(surfaceToLightDirection + surfaceToViewDirection);
+	float light = dot(v_normal, surfaceToLightDirection);
+	//float specular = dot(normal, halfVector);
+
+	gl_FragColor = uColor;
+	if(enableLight){
+		gl_FragColor.rgb *= light;
+	}
+	  // Just add in the specular
+    float specular = 0.0;
+  	if (light > 0.0) {
+    	specular = pow(dot(normal, halfVector), u_shininess);
+  	}
+}
+</script>
+
+<script src="http://www2.cs.sfu.ca/~kkyin/cmpt361/Common/webgl-utils.js"></script>
+<script src="http://www2.cs.sfu.ca/~kkyin/cmpt361/Common/initShaders.js"></script>
+<script src="http://www2.cs.sfu.ca/~kkyin/cmpt361/Common/MV.js"></script>
+<script type="text/javascript" src="bunny.js"></script>
+<script type="text/javascript" src="main.js" defer></script>
+
+<body>
+
+<canvas id="gl-canvas" width="640" height="480" style="float:left"> 
+Oops ... your browser doesn't support the HTML5 canvas element
+</canvas>
+
+</body>
+</html>
